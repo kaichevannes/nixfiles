@@ -1,23 +1,37 @@
 # Installation
-1. [Install nix](https://nixos.org/download/)
-2. [Install home-manager](https://nix-community.github.io/home-manager/index.xhtml#ch-installation)
-3. Clone the repo
-4. home-manager switch
+1. Install terminal emulator
+2. [Install nix](https://nixos.org/download/)
+3. [Install home-manager](https://nix-community.github.io/home-manager/index.xhtml#ch-installation)
+4. Clone the repo
+5. home-manager switch
+6. Set login shell
 
 ## Windows
-**Elevated Powershell**
-```bash
+### Elevated Powershell
+1. Install Wezterm
+```
 winget install wez.wezterm
+```
+3. Install WSL and Nix
+```bash
 wsl.exe --install
 wsl.exe -d Ubuntu
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 exit
+```
+2. Install home-manager and setup dotfiles
+```
 wsl.exe -d Ubuntu
-cd ~
+cd
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 nix-shell '<home-manager>' -A install
 git clone https://github.com/kaichevannes/nixfiles.git
 cd nixfiles
-home-manager switch
+home-manager switch -f home.nix
+```
+3. Change shell to fish manually
+```
+sudo apt update && sudo apt install -y fish
+chsh -s $(which fish)
 ```
