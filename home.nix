@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.username = "focus";
@@ -23,6 +23,7 @@
     ".ssh/known_hosts".source = ~/nixfiles/ssh/known_hosts;
     ".config/helix".source = ~/nixfiles/helix;
     ".config/tmux".source = ~/nixfiles/tmux;
+    ".config/wezterm".source = ~/nixfiles/wezterm;
   };
 
   programs.home-manager.enable = true;
@@ -82,4 +83,13 @@
   };
 
   services.ssh-agent.enable = true;
+
+  home.activation.copyWeztermConfigToWindows = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ "$(uname -r | sed -n 's/.*\( *Microsoft *\).*/\1/ip')" ]; then
+      WIN_HOME="/mnt/c/Users/$(whoami)"
+      if [ -d "$WIN_HOME" ]; then
+        cp "$HOME/nixfiles/wezterm/wezterm.lua" "$WIN_HOME/.wezterm.lua"
+      fi
+    fi
+  '';
 }
