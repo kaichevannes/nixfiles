@@ -36,6 +36,10 @@
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
+
+      if not set -q SSH_AUTH_SOCK
+        ssh-add -q ~/.ssh/id_ed25519
+      end
     '';
   };
 
@@ -60,16 +64,6 @@
     };
   };
 
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-    matchBlocks = {
-      blah = {
-        addKeysToAgent = "~/.ssh/id_ed25519";
-      };
-    };
-  };
-
   programs.starship = {
     enable = true;
     enableFishIntegration = true;
@@ -81,6 +75,7 @@
 
   home.sessionVariables = {
     EDITOR = "hx";
+    ZK_NOTEBOOK_DIR = "~/zettel";
   };
 
   services.ssh-agent.enable = true;
