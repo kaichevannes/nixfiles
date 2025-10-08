@@ -20,6 +20,7 @@
   ];
 
   home.file = {
+    ".ssh/known_hosts".source = ~/nixfiles/ssh/known_hosts;
     ".config/helix".source = ~/nixfiles/helix;
     ".config/tmux".source = ~/nixfiles/tmux;
   };
