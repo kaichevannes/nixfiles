@@ -4,6 +4,7 @@
 3. [Install home-manager](https://nix-community.github.io/home-manager/index.xhtml#ch-installation)
 4. Clone the repo
 5. home-manager switch
+6. Set up SSH key
 
 ## Windows
 ### Elevated Powershell
@@ -11,14 +12,14 @@
 ```
 winget install wez.wezterm
 ```
-3. Install WSL and Nix
+2. Install WSL and Nix
 ```bash
 wsl.exe --install
 wsl.exe -d Ubuntu
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 exit
 ```
-2. Install home-manager and initialise dotfiles
+3. Install home-manager and initialise dotfiles
 ```
 wsl.exe -d Ubuntu
 cd
@@ -28,4 +29,9 @@ nix-shell '<home-manager>' -A install
 git clone https://github.com/kaichevannes/nixfiles.git
 cd nixfiles
 home-manager switch -f home.nix
+```
+4. Initialise SSH key
+```
+ssh-keygen
+cat ~/.ssh/id_ed25519.pub
 ```
