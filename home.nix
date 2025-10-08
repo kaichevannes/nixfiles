@@ -3,10 +3,6 @@
 {
   home.username = "focus";
   home.homeDirectory = "/home/focus";
-
-  home.packages = [
-  ];
-
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -17,11 +13,24 @@
   # changes in each release.
   home.stateVersion = "25.05";
 
+  home.packages = [
+    pkgs.fzf
+    pkgs.ripgrep
+    pkgs.nil
+  ];
+
+  home.file = {
+    ".config/helix".source = ~/nixfiles/helix;
+    ".config/tmux".source = ~/nixfiles/tmux;
+  };
+
   programs.home-manager.enable = true;
   programs.helix.enable = true;
   programs.lazygit.enable = true;
   programs.tmux.enable = true;
   programs.yazi.enable = true;
+  programs.zoxide.enable = true;
+  programs.zk.enable = true;
 
   programs.fish = {
     enable = true;
@@ -55,5 +64,9 @@
     settings = {
       add_newline = false;
     };
+  };
+
+  home.sessionVariables = {
+    EDITOR = "hx";
   };
 }

@@ -1,0 +1,11 @@
+zk = { command = "zk", args = ["lsp"]}
+
+[[language]]
+name = "markdown"
+injection-regex = "md|markdown"
+language-servers = [{ name = "zk"}, {name = "marksman"}]
+roots = [".zk"]
+scope = "source.md"
+file-types = ["md"]
+formatter = { command = 'prettier', args = ["--parser", "markdown"] }
+auto-format = true
