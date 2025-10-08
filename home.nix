@@ -55,6 +55,19 @@
     enable = true;
     userName = "Kai Chevannes";
     userEmail = "chevannes.kai@gmail.com";
+    signing = {
+      format = "ssh";
+    };
+  };
+
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      blah = {
+        addKeysToAgent = "~/.ssh/id_ed25519";
+      };
+    };
   };
 
   programs.starship = {
@@ -69,4 +82,6 @@
   home.sessionVariables = {
     EDITOR = "hx";
   };
+
+  services.ssh-agent.enable = true;
 }
