@@ -61,7 +61,9 @@
     userName = "Kai Chevannes";
     userEmail = "chevannes.kai@gmail.com";
     signing = {
+      key = "~/.ssh/id_ed25519";
       format = "ssh";
+      signByDefault = true;
     };
   };
 
