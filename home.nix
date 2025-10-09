@@ -79,7 +79,7 @@
 
   home.sessionVariables = {
     EDITOR = "hx";
-    ZK_NOTEBOOK_DIR = "~/zettel";
+    ZK_NOTEBOOK_DIR = ~/zettel;
   };
 
   services.ssh-agent.enable = true;
