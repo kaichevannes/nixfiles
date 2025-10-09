@@ -1,18 +1,25 @@
 customCommands:
-  # retrieved from: https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#conventional-commit
-  - key: "<c-v>"
-    context: "global"
-    description: "Create new conventional commit"
+  - key: "C"
+    command: |
+      git commit -m "{{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}{{if .Form.BreakingChange}}!{{end}}: {{ .Form.Description }}" \
+      {{- if .Form.LongDescription }}
+      -m "{{ .Form.LongDescription }}" \
+      {{- end }}
+      {{- if .Form.BreakingChange }}
+      -m "BREAKING CHANGE: {{ .Form.BreakingChange }}"
+      {{- end }}
+    description: "commit with commitizen"
+    context: "files"
     prompts:
       - type: "menu"
-        key: "Type"
         title: "Type of change"
+        key: "Type"
         options:
           - name: "feat"
-            description: "A new feature"
+            description: "a new feature"
             value: "feat"
           - name: "fix"
-            description: "A bug fix"
+            description: "a bug fix"
             value: "fix"
           - name: "refactor"
             description: "A code change that neither fixes a bug nor adds a feature"
@@ -24,42 +31,44 @@ customCommands:
             description: "Documentation only changes"
             value: "docs"
           - name: "build"
-            description: "Changes that affect the build system or external dependencies"
+            description: "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)"
             value: "build"
+          - name: "ci"
+            description: "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)"
+            value: "ci"
           - name: "chore"
             description: "Other changes that don't modify src or test files"
             value: "chore"
-          - name: "ci"
-            description: "Changes to CI configuration files and scripts"
-            value: "ci"
-          - name: "perf"
-            description: "A code change that improves performance"
-            value: "perf"
           - name: "revert"
             description: "Reverts a previous commit"
             value: "revert"
+          - name: "perf"
+            description: "A code change that improves performance"
+            value: "perf"
           - name: "style"
-            description: "Changes that do not affect the meaning of the code"
+            description: "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
             value: "style"
       - type: "input"
-        title: "Scope"
-        key: "Scope"
-        initialValue: ""
-      - type: "menu"
-        key: "Breaking"
-        title: "Breaking change"
-        options:
-          - name: "No"
-            value: ""
-          - name: "Yes"
-            value: "!"
+        title: "Enter the scope(s) of this change"
+        key: "Scopes"
       - type: "input"
-        title: "Message"
-        key: "Message"
-        initialValue: ""
+        title: "Enter the short description of the change"
+        key: "Description"
+      - type: "input"
+        title: "Enter a more detailed description (optional)"
+        key: "LongDescription"
+      - type: "input"
+        title: "Describe the breaking change, if any (leave empty if none)"
+        key: "BreakingChange"
       - type: "confirm"
-        key: "Confirm"
-        title: "Commit"
-        body: "Are you sure you want to commit?"
-    command: "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
-    loadingText: "Creating conventional commit..."
+        title: "Is the commit message correct?"
+        body: |
+          {{ .Form.Type }}{{if .Form.Scopes}}({{ .Form.Scopes }}){{end}}{{if .Form.BreakingChange}}!{{end}}: {{ .Form.Description }}
+          {{- if .Form.LongDescription }}
+          
+          {{ .Form.LongDescription }}
+          {{- end }}
+          {{- if .Form.BreakingChange }}
+          
+          BREAKING CHANGE: {{ .Form.BreakingChange }}
+          {{- end }}
