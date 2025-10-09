@@ -22,6 +22,7 @@
   home.file = {
     ".ssh/known_hosts".source = ~/nixfiles/ssh/known_hosts;
     ".config/helix".source = ~/nixfiles/helix;
+    ".config/lazygit".source = ~/nixfiles/lazygit;
     ".config/tmux".source = ~/nixfiles/tmux;
     ".config/wezterm".source = ~/nixfiles/wezterm;
   };
