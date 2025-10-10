@@ -8,5 +8,10 @@ language-servers = [ "zk-lsp" ]
 
 [[language]]
 name = "markdown"
-formatter = { command = 'prettier', args = ["--parser", "markdown"] }
 auto-format = true
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+
+[[language]]
+name = "go"
+auto-format = true
+formatter = { command = "goimports" }
