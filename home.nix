@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.username = "focus";
-  home.homeDirectory = "/home/focus";
+  home.username = "cheva";
+  home.homeDirectory = "/home/cheva";
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -17,6 +17,7 @@
     pkgs.fzf
     pkgs.ripgrep
     pkgs.nil
+    pkgs.gopls
   ];
 
   home.file = {
@@ -34,6 +35,7 @@
   programs.yazi.enable = true;
   programs.zoxide.enable = true;
   programs.zk.enable = true;
+  programs.go.enable = true;
 
   programs.fish = {
     enable = true;
