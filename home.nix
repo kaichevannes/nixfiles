@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     fzf
     ripgrep
+    tree
     nil
     gopls
     delve
