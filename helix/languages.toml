@@ -15,3 +15,15 @@ formatter = { command = "prettier", args = ["--parser", "markdown"] }
 name = "go"
 auto-format = true
 formatter = { command = "goimports" }
+
+[[language]]
+name = "c"
+file-types = ["c", "h"]
+formatter = { command = 'clang-format' }
+auto-format = true
+
+[[language]]
+name = "cpp"
+file-types = ["cpp", "cc", "cxx", "hpp", "hcc", "hxx"]
+formatter = { command = 'clang-format' }
+auto-format = true

@@ -23,6 +23,7 @@
     gotools
     golangci-lint
     golangci-lint-langserver
+    clang
   ];
 
   home.file = {
