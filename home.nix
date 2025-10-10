@@ -13,11 +13,15 @@
   # changes in each release.
   home.stateVersion = "25.05";
 
-  home.packages = [
-    pkgs.fzf
-    pkgs.ripgrep
-    pkgs.nil
-    pkgs.gopls
+  home.packages = with pkgs; [
+    fzf
+    ripgrep
+    nil
+    gopls
+    delve
+    gotools
+    golangci-lint
+    golangci-lint-langserver
   ];
 
   home.file = {
