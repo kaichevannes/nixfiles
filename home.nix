@@ -24,6 +24,7 @@
     golangci-lint
     golangci-lint-langserver
     clang
+    neocmakelsp
   ];
 
   home.file = {
