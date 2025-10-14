@@ -26,3 +26,6 @@ e = [
 
 [keys.normal.g]
 q = ":reflow"
+
+[keys.select.g]
+q = ":reflow"
