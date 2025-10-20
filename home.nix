@@ -23,7 +23,6 @@
     gotools
     golangci-lint
     golangci-lint-langserver
-    clang
     neocmakelsp
   ];
 
@@ -42,7 +41,6 @@
   programs.yazi.enable = true;
   programs.zoxide.enable = true;
   programs.zk.enable = true;
-  programs.go.enable = true;
 
   programs.fish = {
     enable = true;
