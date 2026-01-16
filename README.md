@@ -14,7 +14,7 @@ winget install wez.wezterm
 ```
 2. Install WSL and Nix
 ```bash
-wsl.exe --install
+wsl.exe --install Ubuntu
 wsl.exe -d Ubuntu
 sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 exit
