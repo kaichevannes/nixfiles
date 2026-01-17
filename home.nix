@@ -67,8 +67,10 @@
 
   programs.git = {
     enable = true;
-    userName = "Kai Chevannes";
-    userEmail = "chevannes.kai@gmail.com";
+    settings = {
+      user.name = "Kai Chevannes";
+      user.email = "chevannes.kai@gmail.com";
+    };
     signing = {
       key = "~/.ssh/id_ed25519";
       format = "ssh";
