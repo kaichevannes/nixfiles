@@ -24,6 +24,9 @@
     golangci-lint
     golangci-lint-langserver
     neocmakelsp
+    typescript
+    typescript-language-server
+    vscode-langservers-extracted # HTML / CSS / JSON
   ];
 
   home.file = {
