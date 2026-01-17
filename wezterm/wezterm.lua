@@ -7,7 +7,7 @@ end
 
 config.color_scheme = "SleepyHollow"
 config.font = wezterm.font "Dank Mono"
-config.font_size = 24.0
+config.font_size = 22.0
 config.audible_bell = "Disabled"
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
